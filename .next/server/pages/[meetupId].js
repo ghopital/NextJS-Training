@@ -73,7 +73,7 @@ var external_react_ = __webpack_require__(6689);
 
 
 function MeetupDetailPage(props) {
-    console.log(props);
+    //console.log(props);
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_.Fragment, {
         children: [
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)((head_default()), {
@@ -95,7 +95,7 @@ function MeetupDetailPage(props) {
 }
 async function getStaticProps(context) {
     const meetupId = context.params.meetupId;
-    console.log(meetupId);
+    //console.log(meetupId);
     const uri = "mongodb+srv://gabo:uaUoQdtL5GHJSJT4@cluster0.gkvum.mongodb.net/meetups";
     const client = await external_mongodb_.MongoClient.connect(uri);
     const db = client.db();
@@ -103,7 +103,7 @@ async function getStaticProps(context) {
     const selectedMeetup = await meetupsCollection.findOne({
         _id: new external_mongodb_.ObjectId(meetupId)
     });
-    console.log(selectedMeetup);
+    //console.log(selectedMeetup);
     client.close();
     return {
         props: {
@@ -128,7 +128,7 @@ async function getStaticPaths() {
     }).toArray();
     client.close();
     return {
-        fallback: false,
+        fallback: true,
         paths: meetups.map((meetup)=>({
                 params: {
                     meetupId: meetup._id.toString()
