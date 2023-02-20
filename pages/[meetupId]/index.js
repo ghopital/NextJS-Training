@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 
 function MeetupDetailPage(props) {
-  console.log(props);
+  //console.log(props);
   return (
     <Fragment>
       <Head>
@@ -21,7 +21,7 @@ function MeetupDetailPage(props) {
 
 export async function getStaticProps(context) {
   const meetupId = context.params.meetupId;
-  console.log(meetupId);
+  //console.log(meetupId);
 
   const uri =
     "mongodb+srv://gabo:uaUoQdtL5GHJSJT4@cluster0.gkvum.mongodb.net/meetups";
@@ -33,7 +33,7 @@ export async function getStaticProps(context) {
   const selectedMeetup = await meetupsCollection.findOne({
     _id: new ObjectId(meetupId),
   });
-  console.log(selectedMeetup);
+  //console.log(selectedMeetup);
   client.close();
 
   return {
@@ -63,7 +63,7 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: 'blocking', // means you have all the possible paths, but if it is true then NextJS will generate the page dinamically when a meetupId was not provided below
+    fallback: true, // means you have all the possible paths, but if it is true then NextJS will generate the page dinamically when a meetupId was not provided below
     paths: meetups.map((meetup) => ({
       params: {
         meetupId: meetup._id.toString(),

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 import { MongoClient } from "mongodb";
 import Head from "next/head";
